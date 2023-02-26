@@ -7,7 +7,7 @@ class Story extends React.Component {
     this.processStory(props.content, props.pictureSplitStr, props.pageSplitStr);
   }
 
-  processStory(content, pictureSplitStr='Illustration:', pageSplitStr='\n\n') {
+  processStory(content, pictureSplitStr='Illustration:', pageSplitStr='\n\n\n') {
     // this.index = 0;
     this.state = {index: 0};
     

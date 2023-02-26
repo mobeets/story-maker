@@ -14,8 +14,12 @@ const EssayForm = ({ handleSubmit }: IForm) => {
           </label>
           <br/><br/>
           <label>
-            Image description text:<br/>
-            <input name="caption" type="text" />
+            Image caption:<br/>
+            <input name="caption" type="text" defaultValue="illustration: " />
+          </label><br/><br/>
+          <label>
+            Page break:<br/>
+            <input name="page" type="text" defaultValue="\n\n\n" />
           </label><br/><br/>
           <input type="submit" value="Go" className="btn" />
         </form>

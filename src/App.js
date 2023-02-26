@@ -5,7 +5,7 @@ import Story from './Story';
 import useFormQuery from "./hooks";
 
 const App = () => {
-  const { handleSubmit, caption, query } = useFormQuery();
+  const { handleSubmit, caption, query, pageBreak } = useFormQuery();
 
   return (
     <div className="App">
@@ -15,6 +15,7 @@ const App = () => {
         {query.length > 0 &&
           <Story
             content={ query }
+            pageSplitStr={ pageBreak }
             pictureSplitStr={ caption }
           />
         }

@@ -4,6 +4,7 @@ export const useFormQuery = () => {
 
     const [query, setQuery] = useState('');
     const [caption, setCaptionKey] = useState('');
+    const [pageBreak, setPageBreak] = useState('');
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -20,13 +21,16 @@ export const useFormQuery = () => {
         const { caption } = Object.fromEntries(new FormData(target));
         setCaptionKey(caption.toString());
 
+        const { page } = Object.fromEntries(new FormData(target));
+        setPageBreak(page.toString());
+
         target.reset();
         target.focus();
 
     }
 
     return {
-        query, caption, handleSubmit
+        query, caption, pageBreak, handleSubmit
     }
 }
 

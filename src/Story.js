@@ -7,8 +7,7 @@ class Story extends React.Component {
     this.processStory(props.content, props.pictureSplitStr, props.pageSplitStr);
   }
 
-  processStory(content, pictureSplitStr='Illustration:', pageSplitStr='\n\n\n') {
-    // this.index = 0;
+  processStory(content, pictureSplitStr, pageSplitStr) {
     this.state = {index: 0};
     
     const pageArray = content.split(pageSplitStr);
@@ -16,6 +15,7 @@ class Story extends React.Component {
     for (var i = 0; i < pageArray.length; i++) {
       this.pages.push(this.makePage(pageArray[i], pictureSplitStr));
     }
+    console.log(pageArray.length, this.pages.length)
   }
 
   makePage(content, pictureSplitStr) {
@@ -26,7 +26,6 @@ class Story extends React.Component {
     if (contentArray.length > 1) {
       obj.image = this.findImageUrl(obj.caption);
     }
-    console.log(contentArray);
     return obj;
   }
 
@@ -40,26 +39,25 @@ class Story extends React.Component {
       this.setState(function(state) {
         return {index: state.index-1};
       });
-    } else { console.log('no prev'); }
+    }
   }
 
   nextPage() {
+    console.log(this.pages.length);
     if (this.state.index < this.pages.length-1) {
       console.log('next');
       this.setState(function(state) {
         return {index: state.index+1};
       });
-    } else { console.log('no next'); }
+    }
   }
 
   handleClick = () => {
     console.log(this.state.index);
     this.nextPage();
-    console.log(this.state.index);
   }
 
   handleKeyPress = (event) => {
-    console.log(event);
     if (event.key === 'ArrowLeft') {
       this.prevPage();
     } else if (event.key === 'ArrowRight') {

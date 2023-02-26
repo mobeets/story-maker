@@ -1,38 +1,25 @@
 import './EssayForm.css';
 import React from 'react';
 
-class EssayForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: '' };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+interface IForm {
+    handleSubmit: (e) => void
+}
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    alert('An essay was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
-
-  render() {
+const EssayForm = ({ handleSubmit }: IForm) => {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+        <form onSubmit={handleSubmit}>
+          <label>
           Story:<br/>
-          <textarea placeholder="Paste your story text here." value={this.state.value} onChange={this.handleChange} />
-        </label><br/><br/>
-        <label>
-          Image description text:<br/>
-          <input type="text" />
-        </label><br/><br/>
-        <input type="submit" value="Go" class="btn" />
-      </form>
-    );
-  }
+          <textarea name="form" placeholder="Paste your story text here." />
+          </label>
+          <br/><br/>
+          <label>
+            Image description text:<br/>
+            <input name="caption" type="text" />
+          </label><br/><br/>
+          <input type="submit" value="Go" className="btn" />
+        </form>
+    )
 }
 
 export default EssayForm;

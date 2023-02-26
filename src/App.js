@@ -2,11 +2,13 @@ import './App.css';
 import React from 'react';
 import EssayForm from './EssayForm';
 import Story from './Story';
+import useFormQuery from "./hooks";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.page = 'story';
+    this.page = 'form';
+    const { handleSubmit, query } = useFormQuery();
   }
 
   render() {
